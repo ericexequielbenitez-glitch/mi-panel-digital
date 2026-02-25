@@ -8,7 +8,7 @@
 <style>
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
   background:#f2f4f7;
 }
 
@@ -24,25 +24,24 @@ body{
   animation:fadeOut 0.8s ease 2.3s forwards;
 }
 
-.logo-text{
-  color:white;
-  font-size:38px;
-  font-weight:500;
-  letter-spacing:0.5px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.logo-circle{
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  border:3px solid white;
-}
-
 @keyframes fadeOut{
   to{opacity:0;visibility:hidden;}
+}
+
+.personal-logo{
+  color:white;
+  font-size:40px;
+  font-weight:400;
+}
+
+.logo-o{
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border:3px solid white;
+  border-radius:50%;
+  position:relative;
+  top:3px;
 }
 
 /* HEADER */
@@ -55,11 +54,15 @@ body{
 }
 
 .header-top{
-  display:flex;
-  align-items:center;
-  gap:8px;
   font-size:22px;
-  font-weight:500;
+  font-weight:400;
+}
+
+.small-o{
+  width:14px;
+  height:14px;
+  border-width:2px;
+  top:2px;
 }
 
 .line-card{
@@ -126,18 +129,17 @@ body{
   margin-top:10px;
 }
 
-/* ACCESOS */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:20px;
   text-align:center;
-  margin-top:10px;
 }
 
-.grid div{
+.grid-item{
+  cursor:pointer;
   font-size:13px;
-  color:#333;
 }
 
 .icon-circle{
@@ -146,6 +148,16 @@ body{
   border-radius:50%;
   border:3px solid #8fd0f3;
   margin:0 auto 8px auto;
+}
+
+/* DETALLE */
+.detail-box{
+  display:none;
+  margin-top:15px;
+  padding:15px;
+  background:#f7f9fb;
+  border-radius:15px;
+  font-size:14px;
 }
 
 /* NAV */
@@ -210,18 +222,15 @@ body{
 <body>
 
 <div class="splash">
-  <div class="logo-text">
-    <div class="logo-circle"></div>
-    personal
+  <div class="personal-logo">
+    pers<span class="logo-o"></span>nal
   </div>
 </div>
 
 <div class="header">
   <div class="header-top">
-    <div class="logo-circle" style="width:18px;height:18px;border-width:2px;"></div>
-    personal
+    pers<span class="logo-o small-o"></span>nal
   </div>
-
   <div class="line-card">
     3624565340 - Línea 5340
   </div>
@@ -247,15 +256,25 @@ body{
 
   <div class="card">
     <div class="grid">
-      <div><div class="icon-circle"></div>Mis facturas</div>
-      <div><div class="icon-circle"></div>Detalle de consumos</div>
-      <div><div class="icon-circle"></div>Packs</div>
-      <div><div class="icon-circle"></div>Mejorar mi plan</div>
-      <div><div class="icon-circle"></div>Mis pedidos</div>
-      <div><div class="icon-circle"></div>Roaming</div>
-      <div><div class="icon-circle"></div>Soporte técnico</div>
-      <div><div class="icon-circle"></div>Más opciones</div>
+      <div class="grid-item" onclick="toggle('facturas')"><div class="icon-circle"></div>Mis facturas</div>
+      <div class="grid-item" onclick="toggle('consumos')"><div class="icon-circle"></div>Detalle de consumos</div>
+      <div class="grid-item" onclick="toggle('packs')"><div class="icon-circle"></div>Packs</div>
+      <div class="grid-item" onclick="toggle('plan')"><div class="icon-circle"></div>Mejorar mi plan</div>
+      <div class="grid-item" onclick="toggle('pedidos')"><div class="icon-circle"></div>Mis pedidos</div>
+      <div class="grid-item" onclick="toggle('roaming')"><div class="icon-circle"></div>Roaming</div>
+      <div class="grid-item" onclick="toggle('soporte')"><div class="icon-circle"></div>Soporte técnico</div>
+      <div class="grid-item" onclick="toggle('mas')"><div class="icon-circle"></div>Más opciones</div>
     </div>
+
+    <div id="facturas" class="detail-box">Última factura: $18.450 — Vence 14/03/26</div>
+    <div id="consumos" class="detail-box">Consumo actual: 20,5GB utilizados</div>
+    <div id="packs" class="detail-box">Tenés activo Pack Datos 5GB + Pack SMS</div>
+    <div id="plan" class="detail-box">Plan actual: 48GB + llamadas libres</div>
+    <div id="pedidos" class="detail-box">No tenés pedidos en curso</div>
+    <div id="roaming" class="detail-box">Roaming LATAM activo</div>
+    <div id="soporte" class="detail-box">Soporte técnico 24/7 disponible</div>
+    <div id="mas" class="detail-box">Configuración, notificaciones y seguridad</div>
+
   </div>
 
 </div>
@@ -275,6 +294,12 @@ body{
 </div>
 
 <script>
+function toggle(id){
+  let boxes=document.querySelectorAll(".detail-box");
+  boxes.forEach(b=>b.style.display="none");
+  document.getElementById(id).style.display="block";
+}
+
 document.getElementById("whatsapp-button").onclick=function(){
   window.open("https://wa.me/5491131392122?text=Hola%20PiA%20vengo%20desde%20la%20app","_blank");
 };
