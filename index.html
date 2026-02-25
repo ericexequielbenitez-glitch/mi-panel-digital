@@ -21,38 +21,17 @@ body{
   align-items:center;
   justify-content:center;
   z-index:9999;
-  animation:fadeOut 0.8s ease 2.2s forwards;
+  animation:fadeOut 0.8s ease 2s forwards;
 }
 
 @keyframes fadeOut{
   to{opacity:0;visibility:hidden;}
 }
 
-.personal-logo{
+.logo-text{
   color:white;
   font-size:42px;
-  display:flex;
-  align-items:center;
-}
-
-/* O pintada */
-.logo-o{
-  width:28px;
-  height:28px;
-  margin:0 5px;
-}
-
-.logo-o circle{
-  fill:none;
-  stroke:white;
-  stroke-width:4;
-  stroke-dasharray:100;
-  stroke-dashoffset:100;
-  animation:draw 1.2s ease forwards;
-}
-
-@keyframes draw{
-  to{stroke-dashoffset:0;}
+  letter-spacing:1px;
 }
 
 /* HEADER */
@@ -66,8 +45,6 @@ body{
 
 .header-title{
   font-size:22px;
-  display:flex;
-  align-items:center;
 }
 
 .line-card{
@@ -160,24 +137,14 @@ body{
 
 <body>
 
+<!-- SPLASH -->
 <div class="splash">
-  <div class="personal-logo">
-    pers
-    <svg class="logo-o" viewBox="0 0 50 50">
-      <circle cx="25" cy="25" r="20"/>
-    </svg>
-    nal
-  </div>
+  <div class="logo-text">Personal</div>
 </div>
 
+<!-- HEADER -->
 <div class="header">
-  <div class="header-title">
-    pers
-    <svg class="logo-o" viewBox="0 0 50 50" width="18">
-      <circle cx="25" cy="25" r="18"/>
-    </svg>
-    nal
-  </div>
+  <div class="header-title">Personal</div>
 
   <div class="line-card">
     3624565340 - Línea 5340
@@ -191,7 +158,6 @@ body{
 
     <div class="grid">
 
-      <!-- FACTURAS -->
       <div class="grid-item">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -204,7 +170,6 @@ body{
         <div class="detail">Última $18.450</div>
       </div>
 
-      <!-- WIFI -->
       <div class="grid-item">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -218,7 +183,6 @@ body{
         <div class="detail">Red estable</div>
       </div>
 
-      <!-- SOPORTE -->
       <div class="grid-item">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -230,7 +194,6 @@ body{
         <div class="detail">24/7 activo</div>
       </div>
 
-      <!-- DEBITO -->
       <div class="grid-item">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -242,7 +205,6 @@ body{
         <div class="detail">Activo</div>
       </div>
 
-      <!-- PEDIDOS -->
       <div class="grid-item">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -254,7 +216,6 @@ body{
         <div class="detail">Sin pendientes</div>
       </div>
 
-      <!-- PERFIL -->
       <div class="grid-item">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -266,7 +227,6 @@ body{
         <div class="detail">Actualizado</div>
       </div>
 
-      <!-- MÁS -->
       <div class="grid-item">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -295,7 +255,7 @@ document.getElementById("whatsapp-button").onclick=function(){
 };
 </script>
 
-<!-- TIDIO (ahora sí visible) -->
+<!-- TIDIO -->
 <script src="//code.tidio.co/cdcvpmq1itowmt3wueaoni6hfn67omjl.js"></script>
 
 </body>
