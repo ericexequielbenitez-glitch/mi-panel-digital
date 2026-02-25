@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulador App</title>
+<title>Simulador Personal</title>
 
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial Black, Arial, sans-serif;
   background:#f2f4f7;
 }
 
@@ -21,7 +21,7 @@ body{
   align-items:center;
   justify-content:center;
   z-index:9999;
-  animation:fadeOut 0.8s ease 2.5s forwards;
+  animation:fadeOut 0.8s ease 2.2s forwards;
 }
 
 @keyframes fadeOut{
@@ -30,51 +30,29 @@ body{
 
 .personal-logo{
   color:white;
-  font-family:Arial Black, Arial, sans-serif;
   font-size:42px;
-  letter-spacing:1px;
   display:flex;
   align-items:center;
 }
 
-/* NUEVA O PARTIDA */
+/* O pintada */
 .logo-o{
-  position:relative;
   width:28px;
   height:28px;
-  margin:0 3px;
+  margin:0 5px;
 }
 
-.logo-o::before,
-.logo-o::after{
-  content:"";
-  position:absolute;
-  width:50%;
-  height:100%;
-  border:4px solid white;
-  border-radius:50%;
-  top:0;
-  transition:all 1s ease;
+.logo-o circle{
+  fill:none;
+  stroke:white;
+  stroke-width:4;
+  stroke-dasharray:100;
+  stroke-dashoffset:100;
+  animation:draw 1.2s ease forwards;
 }
 
-.logo-o::before{
-  left:-15px;
-  border-right:none;
-  animation:mergeLeft 1.2s forwards;
-}
-
-.logo-o::after{
-  right:-15px;
-  border-left:none;
-  animation:mergeRight 1.2s forwards;
-}
-
-@keyframes mergeLeft{
-  to{left:0;}
-}
-
-@keyframes mergeRight{
-  to{right:0;}
+@keyframes draw{
+  to{stroke-dashoffset:0;}
 }
 
 /* HEADER */
@@ -87,15 +65,9 @@ body{
 }
 
 .header-title{
-  font-family:Arial Black, Arial, sans-serif;
   font-size:22px;
   display:flex;
   align-items:center;
-}
-
-.small-o{
-  width:16px;
-  height:16px;
 }
 
 .line-card{
@@ -103,7 +75,6 @@ body{
   padding:14px;
   border-radius:14px;
   margin-top:15px;
-  font-weight:bold;
   color:#1a1a1a;
 }
 
@@ -123,35 +94,9 @@ body{
 }
 
 .card h3{
-  margin:0 0 10px 0;
-  font-weight:bold;
+  margin:0 0 15px 0;
 }
 
-.progress{
-  background:#e5e5e5;
-  height:8px;
-  border-radius:10px;
-  overflow:hidden;
-  margin:12px 0;
-}
-
-.progress-bar{
-  width:65%;
-  height:100%;
-  background:#1e8fd1;
-}
-
-.success{
-  background:#e8f7ec;
-  padding:8px 14px;
-  border-radius:20px;
-  color:#2e7d32;
-  font-weight:bold;
-  display:inline-block;
-  margin-top:10px;
-}
-
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -160,37 +105,34 @@ body{
 }
 
 .grid-item{
-  font-size:13px;
-}
-
-.icon-circle{
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  border:3px solid #8fd0f3;
-  margin:0 auto 8px auto;
-  background:#eef8ff;
-}
-
-/* DETALLES */
-.detail-text{
   font-size:12px;
+}
+
+.icon{
+  width:60px;
+  height:60px;
+  margin:0 auto 8px auto;
+}
+
+.icon svg{
+  width:100%;
+  height:100%;
+  stroke:#1e8fd1;
+  stroke-width:2;
+  fill:none;
+}
+
+.detail{
+  font-size:11px;
   color:#555;
   margin-top:4px;
 }
 
 /* WHATSAPP */
-#whatsapp-container{
+#whatsapp-button{
   position:fixed;
   bottom:200px;
   right:25px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  z-index:9999;
-}
-
-#whatsapp-button{
   width:65px;
   height:65px;
   border-radius:50%;
@@ -201,6 +143,7 @@ body{
   cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,0.25);
   animation:pulse 2s infinite;
+  z-index:9999;
 }
 
 #whatsapp-button img{
@@ -219,13 +162,21 @@ body{
 
 <div class="splash">
   <div class="personal-logo">
-    pers<span class="logo-o"></span>nal
+    pers
+    <svg class="logo-o" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="20"/>
+    </svg>
+    nal
   </div>
 </div>
 
 <div class="header">
   <div class="header-title">
-    pers<span class="logo-o small-o"></span>nal
+    pers
+    <svg class="logo-o" viewBox="0 0 50 50" width="18">
+      <circle cx="25" cy="25" r="18"/>
+    </svg>
+    nal
   </div>
 
   <div class="line-card">
@@ -239,63 +190,103 @@ body{
     <h3>Mis servicios</h3>
 
     <div class="grid">
+
+      <!-- FACTURAS -->
       <div class="grid-item">
-        <div class="icon-circle"></div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="8" x2="16" y2="8"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+        </div>
         Mis facturas
-        <div class="detail-text">Última: $18.450</div>
+        <div class="detail">Última $18.450</div>
       </div>
 
+      <!-- WIFI -->
       <div class="grid-item">
-        <div class="icon-circle"></div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M2 8a15 15 0 0 1 20 0"/>
+            <path d="M5 12a10 10 0 0 1 14 0"/>
+            <path d="M8 16a5 5 0 0 1 8 0"/>
+            <circle cx="12" cy="20" r="1"/>
+          </svg>
+        </div>
         Mi WiFi
-        <div class="detail-text">Red estable</div>
+        <div class="detail">Red estable</div>
       </div>
 
+      <!-- SOPORTE -->
       <div class="grid-item">
-        <div class="icon-circle"></div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a7.5 7.5 0 1 0-14.8 0"/>
+          </svg>
+        </div>
         Soporte técnico
-        <div class="detail-text">Disponible 24/7</div>
+        <div class="detail">24/7 activo</div>
       </div>
 
+      <!-- DEBITO -->
       <div class="grid-item">
-        <div class="icon-circle"></div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2"/>
+            <line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+        </div>
         Débito automático
-        <div class="detail-text">Activo</div>
+        <div class="detail">Activo</div>
       </div>
 
+      <!-- PEDIDOS -->
       <div class="grid-item">
-        <div class="icon-circle"></div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="1" y="3" width="15" height="13"/>
+            <path d="M16 8h4l3 5v3h-7z"/>
+          </svg>
+        </div>
         Mis pedidos
-        <div class="detail-text">Sin pendientes</div>
+        <div class="detail">Sin pendientes</div>
       </div>
 
+      <!-- PERFIL -->
       <div class="grid-item">
-        <div class="icon-circle"></div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M4 22a8 8 0 0 1 16 0"/>
+          </svg>
+        </div>
         Mi perfil
-        <div class="detail-text">Actualizado</div>
+        <div class="detail">Actualizado</div>
       </div>
 
+      <!-- MÁS -->
       <div class="grid-item">
-        <div class="icon-circle"></div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <circle cx="19" cy="12" r="1"/>
+            <circle cx="5" cy="12" r="1"/>
+          </svg>
+        </div>
         Más opciones
-        <div class="detail-text">Configuraciones</div>
+        <div class="detail">Configuración</div>
       </div>
 
     </div>
   </div>
 
-  <div class="card">
-    <h3>¡Estás al día!</h3>
-    <p>No tenés débitos pendientes</p>
-    <div class="success">Tenés a favor: $52.427,11</div>
-  </div>
-
 </div>
 
-<div id="whatsapp-container">
-  <div id="whatsapp-button">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-  </div>
+<!-- WHATSAPP -->
+<div id="whatsapp-button">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </div>
 
 <script>
@@ -304,7 +295,11 @@ document.getElementById("whatsapp-button").onclick=function(){
 };
 </script>
 
+<!-- TIDIO (ahora sí visible) -->
+<script src="//code.tidio.co/cdcvpmq1itowmt3wueaoni6hfn67omjl.js"></script>
+
 </body>
 </html>
+
 
 
