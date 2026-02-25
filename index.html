@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Panel</title>
+<title>Simulador App</title>
 
 <style>
 body{
   margin:0;
-  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:Arial, sans-serif;
   background:#f2f4f7;
 }
 
@@ -21,7 +21,7 @@ body{
   align-items:center;
   justify-content:center;
   z-index:9999;
-  animation:fadeOut 0.8s ease 2.3s forwards;
+  animation:fadeOut 0.8s ease 2.5s forwards;
 }
 
 @keyframes fadeOut{
@@ -30,39 +30,72 @@ body{
 
 .personal-logo{
   color:white;
-  font-size:40px;
-  font-weight:400;
+  font-family:Arial Black, Arial, sans-serif;
+  font-size:42px;
+  letter-spacing:1px;
+  display:flex;
+  align-items:center;
 }
 
+/* NUEVA O PARTIDA */
 .logo-o{
-  display:inline-block;
-  width:20px;
-  height:20px;
-  border:3px solid white;
-  border-radius:50%;
   position:relative;
-  top:3px;
+  width:28px;
+  height:28px;
+  margin:0 3px;
+}
+
+.logo-o::before,
+.logo-o::after{
+  content:"";
+  position:absolute;
+  width:50%;
+  height:100%;
+  border:4px solid white;
+  border-radius:50%;
+  top:0;
+  transition:all 1s ease;
+}
+
+.logo-o::before{
+  left:-15px;
+  border-right:none;
+  animation:mergeLeft 1.2s forwards;
+}
+
+.logo-o::after{
+  right:-15px;
+  border-left:none;
+  animation:mergeRight 1.2s forwards;
+}
+
+@keyframes mergeLeft{
+  to{left:0;}
+}
+
+@keyframes mergeRight{
+  to{right:0;}
 }
 
 /* HEADER */
 .header{
   background:linear-gradient(180deg,#2db3e6,#1e8fd1);
   padding:20px 16px 60px 16px;
-  border-bottom-left-radius:28px;
-  border-bottom-right-radius:28px;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
   color:white;
 }
 
-.header-top{
+.header-title{
+  font-family:Arial Black, Arial, sans-serif;
   font-size:22px;
-  font-weight:400;
+  display:flex;
+  align-items:center;
 }
 
 .small-o{
-  width:14px;
-  height:14px;
-  border-width:2px;
-  top:2px;
+  width:16px;
+  height:16px;
 }
 
 .line-card{
@@ -70,7 +103,7 @@ body{
   padding:14px;
   border-radius:14px;
   margin-top:15px;
-  font-weight:500;
+  font-weight:bold;
   color:#1a1a1a;
 }
 
@@ -90,8 +123,8 @@ body{
 }
 
 .card h3{
-  margin:0 0 8px 0;
-  font-weight:600;
+  margin:0 0 10px 0;
+  font-weight:bold;
 }
 
 .progress{
@@ -108,23 +141,12 @@ body{
   background:#1e8fd1;
 }
 
-.button{
-  display:inline-block;
-  margin-top:12px;
-  padding:10px 18px;
-  background:#1e8fd1;
-  color:white;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:500;
-}
-
 .success{
   background:#e8f7ec;
   padding:8px 14px;
   border-radius:20px;
   color:#2e7d32;
-  font-weight:600;
+  font-weight:bold;
   display:inline-block;
   margin-top:10px;
 }
@@ -133,50 +155,34 @@ body{
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:20px;
+  gap:25px;
   text-align:center;
 }
 
 .grid-item{
-  cursor:pointer;
   font-size:13px;
 }
 
 .icon-circle{
-  width:65px;
-  height:65px;
+  width:70px;
+  height:70px;
   border-radius:50%;
   border:3px solid #8fd0f3;
   margin:0 auto 8px auto;
+  background:#eef8ff;
 }
 
-/* DETALLE */
-.detail-box{
-  display:none;
-  margin-top:15px;
-  padding:15px;
-  background:#f7f9fb;
-  border-radius:15px;
-  font-size:14px;
-}
-
-/* NAV */
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  padding:12px 0;
-  box-shadow:0 -4px 20px rgba(0,0,0,0.08);
-  font-size:13px;
+/* DETALLES */
+.detail-text{
+  font-size:12px;
+  color:#555;
+  margin-top:4px;
 }
 
 /* WHATSAPP */
 #whatsapp-container{
   position:fixed;
-  bottom:190px;
+  bottom:200px;
   right:25px;
   display:flex;
   align-items:center;
@@ -201,16 +207,6 @@ body{
   width:34px;
 }
 
-#whatsapp-tooltip{
-  background:white;
-  padding:10px 16px;
-  border-radius:16px;
-  font-size:14px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.15);
-  opacity:0;
-  transition:0.4s;
-}
-
 @keyframes pulse{
   0%{transform:scale(1);}
   50%{transform:scale(1.1);}
@@ -228,9 +224,10 @@ body{
 </div>
 
 <div class="header">
-  <div class="header-top">
+  <div class="header-title">
     pers<span class="logo-o small-o"></span>nal
   </div>
+
   <div class="line-card">
     3624565340 - Línea 5340
   </div>
@@ -239,79 +236,73 @@ body{
 <div class="container">
 
   <div class="card">
-    <h3>Mis disponibles</h3>
-    <p><strong>27,5 GB</strong> disponibles de 48 GB</p>
-    <div class="progress">
-      <div class="progress-bar"></div>
+    <h3>Mis servicios</h3>
+
+    <div class="grid">
+      <div class="grid-item">
+        <div class="icon-circle"></div>
+        Mis facturas
+        <div class="detail-text">Última: $18.450</div>
+      </div>
+
+      <div class="grid-item">
+        <div class="icon-circle"></div>
+        Mi WiFi
+        <div class="detail-text">Red estable</div>
+      </div>
+
+      <div class="grid-item">
+        <div class="icon-circle"></div>
+        Soporte técnico
+        <div class="detail-text">Disponible 24/7</div>
+      </div>
+
+      <div class="grid-item">
+        <div class="icon-circle"></div>
+        Débito automático
+        <div class="detail-text">Activo</div>
+      </div>
+
+      <div class="grid-item">
+        <div class="icon-circle"></div>
+        Mis pedidos
+        <div class="detail-text">Sin pendientes</div>
+      </div>
+
+      <div class="grid-item">
+        <div class="icon-circle"></div>
+        Mi perfil
+        <div class="detail-text">Actualizado</div>
+      </div>
+
+      <div class="grid-item">
+        <div class="icon-circle"></div>
+        Más opciones
+        <div class="detail-text">Configuraciones</div>
+      </div>
+
     </div>
-    <a href="#" class="button">Comprar packs</a>
   </div>
 
   <div class="card">
     <h3>¡Estás al día!</h3>
     <p>No tenés débitos pendientes</p>
     <div class="success">Tenés a favor: $52.427,11</div>
-    <p style="margin-top:10px;">Débito automático activo</p>
   </div>
 
-  <div class="card">
-    <div class="grid">
-      <div class="grid-item" onclick="toggle('facturas')"><div class="icon-circle"></div>Mis facturas</div>
-      <div class="grid-item" onclick="toggle('consumos')"><div class="icon-circle"></div>Detalle de consumos</div>
-      <div class="grid-item" onclick="toggle('packs')"><div class="icon-circle"></div>Packs</div>
-      <div class="grid-item" onclick="toggle('plan')"><div class="icon-circle"></div>Mejorar mi plan</div>
-      <div class="grid-item" onclick="toggle('pedidos')"><div class="icon-circle"></div>Mis pedidos</div>
-      <div class="grid-item" onclick="toggle('roaming')"><div class="icon-circle"></div>Roaming</div>
-      <div class="grid-item" onclick="toggle('soporte')"><div class="icon-circle"></div>Soporte técnico</div>
-      <div class="grid-item" onclick="toggle('mas')"><div class="icon-circle"></div>Más opciones</div>
-    </div>
-
-    <div id="facturas" class="detail-box">Última factura: $18.450 — Vence 14/03/26</div>
-    <div id="consumos" class="detail-box">Consumo actual: 20,5GB utilizados</div>
-    <div id="packs" class="detail-box">Tenés activo Pack Datos 5GB + Pack SMS</div>
-    <div id="plan" class="detail-box">Plan actual: 48GB + llamadas libres</div>
-    <div id="pedidos" class="detail-box">No tenés pedidos en curso</div>
-    <div id="roaming" class="detail-box">Roaming LATAM activo</div>
-    <div id="soporte" class="detail-box">Soporte técnico 24/7 disponible</div>
-    <div id="mas" class="detail-box">Configuración, notificaciones y seguridad</div>
-
-  </div>
-
-</div>
-
-<div class="bottom-nav">
-  <div>Inicio</div>
-  <div>Mi plan</div>
-  <div>Beneficios</div>
-  <div>Más</div>
 </div>
 
 <div id="whatsapp-container">
-  <div id="whatsapp-tooltip">Hablemos por WhatsApp</div>
   <div id="whatsapp-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
   </div>
 </div>
 
 <script>
-function toggle(id){
-  let boxes=document.querySelectorAll(".detail-box");
-  boxes.forEach(b=>b.style.display="none");
-  document.getElementById(id).style.display="block";
-}
-
 document.getElementById("whatsapp-button").onclick=function(){
   window.open("https://wa.me/5491131392122?text=Hola%20PiA%20vengo%20desde%20la%20app","_blank");
 };
-
-setInterval(function(){
-  let t=document.getElementById("whatsapp-tooltip");
-  t.style.opacity=1;
-  setTimeout(()=>{t.style.opacity=0;},3000);
-},7000);
 </script>
-
-<script src="//code.tidio.co/cdcvpmq1itowmt3wueaoni6hfn67omjl.js" async></script>
 
 </body>
 </html>
