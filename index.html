@@ -15,6 +15,11 @@ body{
   overflow-x:hidden;
 }
 
+/* OCULTAR BOTÓN NATIVO DE TIDIO */
+iframe[src*="tidio"]{
+  display:none !important;
+}
+
 /* SPLASH */
 .splash{
   position:fixed;
@@ -23,29 +28,37 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  flex-direction:column;
   color:white;
   z-index:9999;
   animation:fadeOut 1s ease 2.5s forwards;
 }
 
-.logo-text{
-  font-size:46px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:44px;
   font-weight:700;
-  letter-spacing:1px;
 }
 
-.rotating-o{
-  display:inline-block;
-  animation:spin 2s linear infinite;
+/* O tipo loader */
+.loader-o{
+  width:28px;
+  height:28px;
+  border:4px solid white;
+  border-top:4px solid transparent;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
 }
 
 @keyframes spin{
-  from { transform:rotate(0deg); }
-  to { transform:rotate(360deg); }
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 @keyframes fadeOut{
-  to{opacity:0; visibility:hidden;}
+  to{opacity:0;visibility:hidden;}
 }
 
 /* MAIN */
@@ -59,18 +72,17 @@ body{
   to{opacity:1; transform:translateY(0);}
 }
 
-/* HEADER */
 .header{
   background:linear-gradient(180deg,#2db3e6,#1e8fd1);
-  padding:20px 16px 50px 16px;
+  padding:20px 16px 60px 16px;
   border-bottom-left-radius:30px;
   border-bottom-right-radius:30px;
 }
 
 .container{
   padding:20px;
-  margin-top:-35px;
-  margin-bottom:120px;
+  margin-top:-40px;
+  margin-bottom:200px;
 }
 
 .card{
@@ -119,10 +131,10 @@ body{
   font-size:20px;
 }
 
-/* WHATSAPP */
+/* WHATSAPP MÁS ARRIBA */
 #whatsapp-container{
   position:fixed;
-  bottom:100px;
+  bottom:160px; /* 👈 MÁS ARRIBA */
   right:25px;
   display:flex;
   align-items:center;
@@ -139,7 +151,7 @@ body{
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+  box-shadow:0 12px 30px rgba(0,0,0,0.25);
   animation:pulse 2s infinite;
 }
 
@@ -172,8 +184,8 @@ body{
 
 <!-- SPLASH -->
 <div class="splash">
-  <div class="logo-text">
-    pers<span class="rotating-o">o</span>nal
+  <div class="logo">
+    pers<div class="loader-o"></div>nal
   </div>
 </div>
 
@@ -182,7 +194,6 @@ body{
   <div class="header"></div>
 
   <div class="container">
-
     <div class="card">
       <strong>Línea Demo 5340</strong>
     </div>
@@ -194,7 +205,6 @@ body{
         <div class="progress-bar"></div>
       </div>
     </div>
-
   </div>
 
 </div>
