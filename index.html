@@ -10,30 +10,62 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
   background:#f2f4f7;
+  overflow-x:hidden;
 }
 
-/* INTENTAR OCULTAR BURBUJA ORIGINAL */
-iframe[src*="tidio"]{
-  display:none !important;
-}
-
-/* SPLASH */
+/* SPLASH SCREEN */
 .splash{
   position:fixed;
   inset:0;
   background:linear-gradient(180deg,#2db3e6,#1e8fd1);
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
   color:white;
-  font-size:40px;
-  font-weight:600;
   z-index:9999;
-  animation:fadeOut 1s ease 2s forwards;
+  animation:fadeOut 1s ease 2.2s forwards;
+}
+
+.logo-circle{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  border:6px solid white;
+  margin-bottom:20px;
+  animation:pop 0.8s ease;
+}
+
+.logo-text{
+  font-size:38px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+@keyframes pop{
+  0%{transform:scale(0.6); opacity:0;}
+  100%{transform:scale(1); opacity:1;}
 }
 
 @keyframes fadeOut{
-  to{opacity:0;visibility:hidden;}
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+/* MAIN CONTENT ANIMATION */
+.main{
+  opacity:0;
+  transform:translateY(20px);
+  animation:appear 0.8s ease 2.3s forwards;
+}
+
+@keyframes appear{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* HEADER */
@@ -43,21 +75,6 @@ iframe[src*="tidio"]{
   color:white;
   border-bottom-left-radius:25px;
   border-bottom-right-radius:25px;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:22px;
-  font-weight:500;
-}
-
-.logo-circle{
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  border:3px solid white;
 }
 
 .container{
@@ -168,54 +185,46 @@ iframe[src*="tidio"]{
 
 <body>
 
+<!-- SPLASH -->
 <div class="splash">
-  <div class="logo">
-    <div class="logo-circle"></div>
-    personal
-  </div>
+  <div class="logo-circle"></div>
+  <div class="logo-text">personal</div>
 </div>
 
-<div class="header">
-  <div class="logo">
-    <div class="logo-circle"></div>
-    personal
-  </div>
-</div>
+<!-- MAIN CONTENT -->
+<div class="main">
 
-<div class="container">
+  <div class="header"></div>
 
-  <div class="card">
-    <strong>Línea Demo 5340</strong>
-  </div>
+  <div class="container">
 
-  <div class="card">
-    <h3>Mis disponibles</h3>
-    <p><strong>27,5 GB</strong> disponibles de 48 GB</p>
-    <div class="progress">
-      <div class="progress-bar"></div>
+    <div class="card">
+      <strong>Línea Demo 5340</strong>
     </div>
-    <a href="#" class="button">Comprar packs</a>
+
+    <div class="card">
+      <h3>Mis disponibles</h3>
+      <p><strong>27,5 GB</strong> disponibles de 48 GB</p>
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+      <a href="#" class="button">Comprar packs</a>
+    </div>
+
+    <div class="card">
+      <h3>¡Mejorá tu plan!</h3>
+      <p>Accedé a beneficios exclusivos por tiempo limitado.</p>
+      <a href="#" class="button">Conocer más</a>
+    </div>
+
+    <div class="card">
+      <h3>¡Estás al día!</h3>
+      <p>No tenés débitos pendientes.</p>
+      <div class="success">Saldo a favor: $52.427</div>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3>¡Mejorá tu plan!</h3>
-    <p>Accedé a beneficios exclusivos por tiempo limitado.</p>
-    <a href="#" class="button">Conocer más</a>
-  </div>
-
-  <div class="card">
-    <h3>¡Estás al día!</h3>
-    <p>No tenés débitos pendientes.</p>
-    <div class="success">Saldo a favor: $52.427</div>
-  </div>
-
-</div>
-
-<div class="bottom-nav">
-  <div><span>🏠</span>Inicio</div>
-  <div><span>📄</span>Mi plan</div>
-  <div><span>🎁</span>Beneficios</div>
-  <div><span>☰</span>Más</div>
 </div>
 
 <!-- BOTÓN PIA -->
@@ -231,7 +240,6 @@ function openPiA(){
     });
   }
 }
-
 document.getElementById("pia-button").addEventListener("click", openPiA);
 </script>
 
@@ -239,3 +247,4 @@ document.getElementById("pia-button").addEventListener("click", openPiA);
 
 </body>
 </html>
+
