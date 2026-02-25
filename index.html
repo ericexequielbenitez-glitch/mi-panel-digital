@@ -12,8 +12,10 @@ body{
   background:#f2f4f7;
 }
 
-/* OCULTAR BOTÓN ORIGINAL DE TIDIO */
-#tidio-chat { display:none !important; }
+/* INTENTAR OCULTAR BURBUJA ORIGINAL */
+iframe[src*="tidio"]{
+  display:none !important;
+}
 
 /* SPLASH */
 .splash{
@@ -135,7 +137,7 @@ body{
   font-size:20px;
 }
 
-/* BOTÓN OFICIAL PIA */
+/* BOTÓN PIA */
 #pia-button{
   position:fixed;
   bottom:85px;
@@ -189,11 +191,9 @@ body{
   <div class="card">
     <h3>Mis disponibles</h3>
     <p><strong>27,5 GB</strong> disponibles de 48 GB</p>
-
     <div class="progress">
       <div class="progress-bar"></div>
     </div>
-
     <a href="#" class="button">Comprar packs</a>
   </div>
 
@@ -222,11 +222,17 @@ body{
 <div id="pia-button">PiA</div>
 
 <script>
-document.getElementById("pia-button").onclick = function(){
-  if(window.tidioChatApi){
+function openPiA(){
+  if (window.tidioChatApi) {
     window.tidioChatApi.open();
+  } else {
+    document.addEventListener("tidioChat-ready", function() {
+      window.tidioChatApi.open();
+    });
   }
 }
+
+document.getElementById("pia-button").addEventListener("click", openPiA);
 </script>
 
 <script src="//code.tidio.co/cdcvpmq1itowmt3wueaoni6hfn67omjl.js" async></script>
