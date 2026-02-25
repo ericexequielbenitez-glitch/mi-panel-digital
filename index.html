@@ -43,13 +43,10 @@ body{
 }
 
 @keyframes fadeOut{
-  to{
-    opacity:0;
-    visibility:hidden;
-  }
+  to{opacity:0; visibility:hidden;}
 }
 
-/* MAIN APPEAR */
+/* MAIN */
 .main{
   opacity:0;
   transform:translateY(20px);
@@ -57,10 +54,7 @@ body{
 }
 
 @keyframes appear{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  to{opacity:1; transform:translateY(0);}
 }
 
 /* HEADER */
@@ -75,7 +69,7 @@ body{
 .container{
   padding:16px;
   margin-top:-25px;
-  margin-bottom:100px;
+  margin-bottom:140px;
 }
 
 .card{
@@ -84,10 +78,6 @@ body{
   padding:18px;
   margin-bottom:16px;
   box-shadow:0 6px 20px rgba(0,0,0,0.06);
-}
-
-.card h3{
-  margin:0 0 10px 0;
 }
 
 .progress{
@@ -103,27 +93,6 @@ body{
   width:65%;
   background:#1e8fd1;
   border-radius:10px;
-}
-
-.button{
-  display:inline-block;
-  padding:10px 16px;
-  background:#1e8fd1;
-  color:white;
-  border-radius:8px;
-  text-decoration:none;
-  font-size:14px;
-  margin-top:10px;
-}
-
-.success{
-  background:#e8f7ec;
-  color:#2e7d32;
-  padding:6px 12px;
-  border-radius:20px;
-  display:inline-block;
-  font-weight:600;
-  font-size:14px;
 }
 
 /* NAV */
@@ -152,7 +121,7 @@ body{
 /* BOTÓN PIA */
 #pia-button{
   position:fixed;
-  bottom:85px;
+  bottom:150px;
   right:20px;
   width:65px;
   height:65px;
@@ -168,6 +137,39 @@ body{
   box-shadow:0 8px 20px rgba(0,0,0,0.25);
   animation:pulse 2s infinite;
   z-index:9999;
+}
+
+/* WHATSAPP */
+#whatsapp-button{
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#25D366;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  animation:pulse 2s infinite;
+  z-index:9999;
+}
+
+#whatsapp-tooltip{
+  position:fixed;
+  bottom:155px;
+  right:95px;
+  background:white;
+  padding:10px 14px;
+  border-radius:12px;
+  font-size:13px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  opacity:0;
+  transition:opacity 0.5s ease;
 }
 
 @keyframes pulse{
@@ -204,19 +206,6 @@ body{
       <div class="progress">
         <div class="progress-bar"></div>
       </div>
-      <a href="#" class="button">Comprar packs</a>
-    </div>
-
-    <div class="card">
-      <h3>¡Mejorá tu plan!</h3>
-      <p>Accedé a beneficios exclusivos por tiempo limitado.</p>
-      <a href="#" class="button">Conocer más</a>
-    </div>
-
-    <div class="card">
-      <h3>¡Estás al día!</h3>
-      <p>No tenés débitos pendientes.</p>
-      <div class="success">Saldo a favor: $52.427</div>
     </div>
 
   </div>
@@ -225,6 +214,10 @@ body{
 
 <!-- BOTÓN PIA -->
 <div id="pia-button">PiA</div>
+
+<!-- BOTÓN WHATSAPP -->
+<div id="whatsapp-button">💬</div>
+<div id="whatsapp-tooltip">Hablemos por WhatsApp</div>
 
 <script>
 function openPiA(){
@@ -237,6 +230,20 @@ function openPiA(){
   }
 }
 document.getElementById("pia-button").addEventListener("click", openPiA);
+
+/* WHATSAPP */
+document.getElementById("whatsapp-button").onclick = function(){
+  window.open("https://wa.me/5491131392122?text=Hola%20PiA%20vengo%20desde%20la%20app", "_blank");
+};
+
+/* Tooltip aparece y desaparece */
+setInterval(function(){
+  var tooltip = document.getElementById("whatsapp-tooltip");
+  tooltip.style.opacity = 1;
+  setTimeout(function(){
+    tooltip.style.opacity = 0;
+  }, 3000);
+}, 7000);
 </script>
 
 <script src="//code.tidio.co/cdcvpmq1itowmt3wueaoni6hfn67omjl.js" async></script>
