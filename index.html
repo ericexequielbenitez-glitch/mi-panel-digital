@@ -8,9 +8,12 @@
 <style>
 body{
   margin:0;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
   background:#f2f4f7;
 }
+
+/* OCULTAR BOTÓN ORIGINAL DE TIDIO */
+#tidio-chat { display:none !important; }
 
 /* SPLASH */
 .splash{
@@ -58,7 +61,7 @@ body{
 .container{
   padding:16px;
   margin-top:-25px;
-  margin-bottom:80px;
+  margin-bottom:100px;
 }
 
 .card{
@@ -109,7 +112,7 @@ body{
   font-size:14px;
 }
 
-/* BOTTOM NAV */
+/* NAV */
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -130,6 +133,33 @@ body{
 .bottom-nav span{
   display:block;
   font-size:20px;
+}
+
+/* BOTÓN OFICIAL PIA */
+#pia-button{
+  position:fixed;
+  bottom:85px;
+  right:20px;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#2db3e6,#1e8fd1);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  animation:pulse 2s infinite;
+  z-index:9999;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
 }
 </style>
 </head>
@@ -187,6 +217,17 @@ body{
   <div><span>🎁</span>Beneficios</div>
   <div><span>☰</span>Más</div>
 </div>
+
+<!-- BOTÓN PIA -->
+<div id="pia-button">PiA</div>
+
+<script>
+document.getElementById("pia-button").onclick = function(){
+  if(window.tidioChatApi){
+    window.tidioChatApi.open();
+  }
+}
+</script>
 
 <script src="//code.tidio.co/cdcvpmq1itowmt3wueaoni6hfn67omjl.js" async></script>
 
