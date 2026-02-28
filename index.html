@@ -2,265 +2,282 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulador Personal</title>
+<meta name="viewport" content="width=1200">
+<title>Personal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
 body{
-  margin:0;
-  font-family:Arial Black, Arial, sans-serif;
-  background:#f2f4f7;
-}
-
-/* SPLASH */
-.splash{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(180deg,#2db3e6,#1e8fd1);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  animation:fadeOut 0.8s ease 2s forwards;
-}
-
-@keyframes fadeOut{
-  to{opacity:0;visibility:hidden;}
-}
-
-.logo-text{
-  color:white;
-  font-size:42px;
-  letter-spacing:1px;
+    background:#f4f6f8;
+    color:#1f2937;
 }
 
 /* HEADER */
 .header{
-  background:linear-gradient(180deg,#2db3e6,#1e8fd1);
-  padding:20px 16px 60px 16px;
-  border-bottom-left-radius:30px;
-  border-bottom-right-radius:30px;
-  color:white;
+    background:#ffffff;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 70px;
+    border-bottom:1px solid #e5e7eb;
 }
 
-.header-title{
-  font-size:22px;
+.logo{
+    font-size:24px;
+    font-weight:600;
+    color:#00a4e0;
 }
 
-.line-card{
-  background:#e9eef2;
-  padding:14px;
-  border-radius:14px;
-  margin-top:15px;
-  color:#1a1a1a;
+.nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-size:14px;
 }
 
-/* CONTENIDO */
-.container{
-  padding:16px;
-  margin-top:-40px;
-  margin-bottom:200px;
+.nav-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:#4b5563;
+    font-weight:500;
+    position:relative;
+    padding-bottom:20px;
 }
 
+.nav-item img{
+    width:20px;
+    height:20px;
+}
+
+.nav-item:hover{
+    color:#00a4e0;
+}
+
+.nav-item.active::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:#00a4e0;
+    border-radius:3px;
+}
+
+.divider{
+    width:1px;
+    height:22px;
+    background:#e5e7eb;
+}
+
+/* WRAPPER */
+.wrapper{
+    width:1100px;
+    min-width:1100px;
+    margin:60px auto;
+}
+
+/* CARD */
 .card{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  margin-bottom:16px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.06);
+    background:#ffffff;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    padding:28px 32px;
+    margin-bottom:32px;
 }
 
-.card h3{
-  margin:0 0 15px 0;
+.card-title{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:18px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:25px;
-  text-align:center;
+.divider-horizontal{
+    height:1px;
+    background:#e5e7eb;
+    margin:20px 0;
 }
 
-.grid-item{
-  font-size:12px;
+/* PROGRESS */
+.progress-label{
+    font-size:14px;
+    margin-bottom:10px;
 }
 
-.icon{
-  width:60px;
-  height:60px;
-  margin:0 auto 8px auto;
+.progress{
+    height:8px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
 }
 
-.icon svg{
-  width:100%;
-  height:100%;
-  stroke:#1e8fd1;
-  stroke-width:2;
-  fill:none;
+.progress-bar{
+    width:48%;
+    height:8px;
+    background:#0077b6;
+    border-radius:20px;
 }
 
-.detail{
-  font-size:11px;
-  color:#555;
-  margin-top:4px;
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    margin-top:8px;
 }
 
-/* WHATSAPP */
-#whatsapp-button{
-  position:fixed;
-  bottom:200px;
-  right:25px;
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  background:#25D366;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,0.25);
-  animation:pulse 2s infinite;
-  z-index:9999;
+/* STATUS */
+.badge{
+    background:#d1fae5;
+    color:#065f46;
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:13px;
+    margin-left:8px;
 }
 
-#whatsapp-button img{
-  width:34px;
+/* ACTION GRID */
+.actions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
 }
 
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.1);}
-  100%{transform:scale(1);}
+.action-item{
+    background:#f9fafb;
+    border-radius:18px;
+    padding:28px 10px;
+    text-align:center;
+    font-size:14px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.04);
+    transition:.2s ease;
+}
+
+.action-item img{
+    width:36px;
+    margin-bottom:12px;
+}
+
+.action-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
 }
 </style>
 </head>
 
 <body>
 
-<!-- SPLASH -->
-<div class="splash">
-  <div class="logo-text">Personal</div>
-</div>
-
 <!-- HEADER -->
 <div class="header">
-  <div class="header-title">Personal</div>
 
-  <div class="line-card">
-    3624565340 - Línea 3624565340
-  </div>
-</div>
+    <div class="logo">personal</div>
 
-<div class="container">
+    <div class="nav">
 
-  <div class="card">
-    <h3>Mis servicios</h3>
+        <a class="nav-item" href="https://www.personal.com.ar/ayuda/telefonia" target="_blank">
+            <img src="/assets/movil.png"> Móvil
+        </a>
 
-    <div class="grid">
+        <a class="nav-item" href="#">
+            <img src="/assets/fibra.png"> Fibra
+        </a>
 
-      <div class="grid-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="4" y="2" width="16" height="20" rx="2"/>
-            <line x1="8" y1="8" x2="16" y2="8"/>
-            <line x1="8" y1="12" x2="16" y2="12"/>
-          </svg>
-        </div>
-        Mis facturas
-        <div class="detail">Última $18.450</div>
-      </div>
+        <a class="nav-item" href="https://www.personal.com.ar/flow" target="_blank">
+            <img src="/assets/flow.png"> Flow
+        </a>
 
-      <div class="grid-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M2 8a15 15 0 0 1 20 0"/>
-            <path d="M5 12a10 10 0 0 1 14 0"/>
-            <path d="M8 16a5 5 0 0 1 8 0"/>
-            <circle cx="12" cy="20" r="1"/>
-          </svg>
-        </div>
-        Mi WiFi
-        <div class="detail">Red estable</div>
-      </div>
+        <a class="nav-item" href="https://www.personalpay.com.ar/" target="_blank">
+            <img src="/assets/pay.png"> Pay
+        </a>
 
-      <div class="grid-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a7.5 7.5 0 1 0-14.8 0"/>
-          </svg>
-        </div>
-        Soporte técnico
-        <div class="detail">24/7 activo</div>
-      </div>
+        <a class="nav-item" href="https://www.personal.com.ar/smarthome" target="_blank">
+            <img src="/assets/smarthome.png"> Smarthome
+        </a>
 
-      <div class="grid-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="5" width="20" height="14" rx="2"/>
-            <line x1="2" y1="10" x2="22" y2="10"/>
-          </svg>
-        </div>
-        Débito automático
-        <div class="detail">Activo</div>
-      </div>
+        <a class="nav-item active" href="https://www.personal.com.ar/ayuda" target="_blank">
+            ❓ Ayuda
+        </a>
 
-      <div class="grid-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="1" y="3" width="15" height="13"/>
-            <path d="M16 8h4l3 5v3h-7z"/>
-          </svg>
-        </div>
-        Mis pedidos
-        <div class="detail">Sin pendientes</div>
-      </div>
+        <div class="divider"></div>
 
-      <div class="grid-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="7" r="4"/>
-            <path d="M4 22a8 8 0 0 1 16 0"/>
-          </svg>
-        </div>
-        Mi perfil
-        <div class="detail">Actualizado</div>
-      </div>
-
-      <div class="grid-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3"/>
-            <circle cx="19" cy="12" r="1"/>
-            <circle cx="5" cy="12" r="1"/>
-          </svg>
-        </div>
-        Más opciones
-        <div class="detail">Configuración</div>
-      </div>
+        <div>👤 Eric Ezequiel</div>
 
     </div>
-  </div>
-
 </div>
 
-<!-- WHATSAPP -->
-<div id="whatsapp-button">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+<!-- CONTENT -->
+<div class="wrapper">
+
+    <div class="card">
+        <div class="card-title">Mis disponibles</div>
+
+        <div class="progress-label">Datos para todo uso</div>
+
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="progress-info">
+            <span>23,4 GB disponibles</span>
+            <span>48 GB</span>
+        </div>
+
+        <div class="divider-horizontal"></div>
+
+        <small style="color:#6b7280;">
+            Los gigas del plan se renuevan el 14/03/26.
+        </small>
+    </div>
+
+    <div class="card">
+        <div style="font-weight:600;margin-bottom:8px;">¡Estás al día!</div>
+        No tenés débitos pendientes.
+        <span class="badge">Tenés a favor: $52.427,11</span>
+
+        <div class="divider-horizontal"></div>
+
+        Débito automático activo
+    </div>
+
+    <div class="actions">
+
+        <div class="action-item">
+            <img src="/assets/facturas.png">
+            Mis facturas
+        </div>
+
+        <div class="action-item">
+            Detalle de consumos
+        </div>
+
+        <div class="action-item">
+            <img src="/assets/packs.png">
+            Packs
+        </div>
+
+        <div class="action-item">
+            <img src="/assets/mejorar.png">
+            Mejorar plan
+        </div>
+
+        <div class="action-item">Mis pedidos</div>
+        <div class="action-item">Roaming</div>
+        <div class="action-item">Soporte técnico</div>
+        <div class="action-item">Más opciones</div>
+
+    </div>
+
 </div>
-
-<script>
-document.getElementById("whatsapp-button").onclick=function(){
-  window.open("https://wa.me/5491131392122?text=Hola%20PiA%20vengo%20desde%20la%20app","_blank");
-};
-</script>
-
-<!-- TIDIO -->
-<script src="//code.tidio.co/cdcvpmq1itowmt3wueaoni6hfn67omjl.js"></script>
 
 </body>
 </html>
-
-
-
-
