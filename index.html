@@ -163,6 +163,8 @@ body{
     box-shadow:0 4px 12px rgba(0,0,0,0.04);
     transition:.2s ease;
     cursor:pointer;
+    text-decoration:none;
+    color:#1f2937;
 }
 
 .action-item img{
@@ -173,6 +175,37 @@ body{
 .action-item:hover{
     transform:translateY(-3px);
     box-shadow:0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* BENEFICIOS */
+.beneficios{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+    gap:24px;
+}
+
+.beneficio{
+    background:#ffffff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.04);
+}
+
+.beneficio-title{
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+.beneficio small{
+    color:#6b7280;
+}
+
+.beneficio a{
+    display:inline-block;
+    margin-top:10px;
+    color:#00a4e0;
+    font-weight:500;
+    text-decoration:none;
 }
 </style>
 </head>
@@ -185,29 +218,13 @@ body{
 
     <div class="nav">
 
-        <a class="nav-item" href="https://www.personal.com.ar/ayuda/telefonia" target="_blank">
-            <img src="assets/movil.png" alt="Móvil"> Móvil
-        </a>
+        <a class="nav-item" href="#"><img src="assets/movil.png" alt=""> Móvil</a>
+        <a class="nav-item" href="#"><img src="assets/fibra.png" alt=""> Fibra</a>
+        <a class="nav-item" href="#"><img src="assets/flow.png" alt=""> Flow</a>
+        <a class="nav-item" href="#"><img src="assets/pay.png" alt=""> Pay</a>
+        <a class="nav-item" href="#"><img src="assets/smarthome.png" alt=""> Smarthome</a>
 
-        <a class="nav-item" href="#">
-            <img src="assets/fibra.png" alt="Fibra"> Fibra
-        </a>
-
-        <a class="nav-item" href="https://www.personal.com.ar/flow" target="_blank">
-            <img src="assets/flow.png" alt="Flow"> Flow
-        </a>
-
-        <a class="nav-item" href="https://www.personalpay.com.ar/" target="_blank">
-            <img src="assets/pay.png" alt="Pay"> Pay
-        </a>
-
-        <a class="nav-item" href="https://www.personal.com.ar/smarthome" target="_blank">
-            <img src="assets/smarthome.png" alt="Smarthome"> Smarthome
-        </a>
-
-        <a class="nav-item active" href="https://www.personal.com.ar/ayuda" target="_blank">
-            <img src="assets/help.png" alt="Ayuda"> Ayuda
-        </a>
+        <a class="nav-item active" href="#"><img src="assets/help.png" alt=""> Ayuda</a>
 
         <div class="divider"></div>
 
@@ -218,6 +235,7 @@ body{
 
 <div class="wrapper">
 
+    <!-- MIS DISPONIBLES -->
     <div class="card">
         <div class="card-title">Mis disponibles</div>
 
@@ -239,6 +257,7 @@ body{
         </small>
     </div>
 
+    <!-- ESTADO DE CUENTA -->
     <div class="card">
         <div style="font-weight:600;margin-bottom:8px;">¡Estás al día!</div>
         No tenés débitos pendientes.
@@ -249,31 +268,36 @@ body{
         Débito automático activo
     </div>
 
+    <!-- ACCIONES -->
     <div class="actions">
 
-        <a class="action-item" href="#">
-            <img src="assets/facturas.png" alt="Facturas">
-            Mis facturas
-        </a>
-
-        <a class="action-item" href="#">
-            Detalle de consumos
-        </a>
-
-        <a class="action-item" href="#">
-            <img src="assets/packs.png" alt="Packs">
-            Packs
-        </a>
-
-        <a class="action-item" href="#">
-            <img src="assets/mejorar.png" alt="Mejorar plan">
-            Mejorar plan
-        </a>
-
+        <a class="action-item" href="#"><img src="assets/facturas.png" alt=""> Mis facturas</a>
+        <a class="action-item" href="#">Detalle de consumos</a>
+        <a class="action-item" href="#"><img src="assets/packs.png" alt=""> Packs</a>
+        <a class="action-item" href="#"><img src="assets/mejorar.png" alt=""> Mejorar mi plan</a>
         <a class="action-item" href="#">Mis pedidos</a>
         <a class="action-item" href="#">Roaming</a>
         <a class="action-item" href="#">Soporte técnico</a>
         <a class="action-item" href="#">Más opciones</a>
+
+    </div>
+
+    <!-- BENEFICIOS -->
+    <h3 style="margin:40px 0 20px 0;">¡Beneficios para vos!</h3>
+
+    <div class="beneficios">
+
+        <div class="beneficio">
+            <div class="beneficio-title">¡Compartí tus gigas gratis!</div>
+            <small>Si tenés más de una línea a tu nombre, podés enviar gigas de tu plan hasta 3 veces por mes.</small>
+            <a href="#">Conocer más</a>
+        </div>
+
+        <div class="beneficio">
+            <div class="beneficio-title">¡Gigas gratis en tus viajes!</div>
+            <small>Tenés 2 GB + WhatsApp gratis para usar en el exterior.</small>
+            <a href="#">Conocer más</a>
+        </div>
 
     </div>
 
