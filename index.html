@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1200">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Personal</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 70px;
+    padding:0 32px;
     border-bottom:1px solid #e5e7eb;
 }
 
@@ -40,7 +40,7 @@ body{
 .nav{
     display:flex;
     align-items:center;
-    gap:28px;
+    gap:24px;
     font-size:14px;
 }
 
@@ -83,9 +83,10 @@ body{
 
 /* WRAPPER */
 .wrapper{
-    width:1100px;
-    min-width:1100px;
-    margin:60px auto;
+    width:100%;
+    max-width:1100px;
+    margin:40px auto;
+    padding:0 20px;
 }
 
 /* CARD */
@@ -149,7 +150,7 @@ body{
 /* ACTION GRID */
 .actions{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
     gap:30px;
 }
 
@@ -161,6 +162,7 @@ body{
     font-size:14px;
     box-shadow:0 4px 12px rgba(0,0,0,0.04);
     transition:.2s ease;
+    cursor:pointer;
 }
 
 .action-item img{
@@ -184,27 +186,27 @@ body{
     <div class="nav">
 
         <a class="nav-item" href="https://www.personal.com.ar/ayuda/telefonia" target="_blank">
-            <img src="assets/movil.png" alt=""> Móvil
+            <img src="assets/movil.png" alt="Móvil"> Móvil
         </a>
 
         <a class="nav-item" href="#">
-            <img src="assets/fibra.png" alt=""> Fibra
+            <img src="assets/fibra.png" alt="Fibra"> Fibra
         </a>
 
         <a class="nav-item" href="https://www.personal.com.ar/flow" target="_blank">
-            <img src="assets/flow.png" alt=""> Flow
+            <img src="assets/flow.png" alt="Flow"> Flow
         </a>
 
         <a class="nav-item" href="https://www.personalpay.com.ar/" target="_blank">
-            <img src="assets/pay.png" alt=""> Pay
+            <img src="assets/pay.png" alt="Pay"> Pay
         </a>
 
         <a class="nav-item" href="https://www.personal.com.ar/smarthome" target="_blank">
-            <img src="assets/smarthome.png" alt=""> Smarthome
+            <img src="assets/smarthome.png" alt="Smarthome"> Smarthome
         </a>
 
         <a class="nav-item active" href="https://www.personal.com.ar/ayuda" target="_blank">
-            ❓ Ayuda
+            <img src="assets/help.png" alt="Ayuda"> Ayuda
         </a>
 
         <div class="divider"></div>
@@ -249,29 +251,29 @@ body{
 
     <div class="actions">
 
-        <div class="action-item">
-            <img src="assets/facturas.png">
+        <a class="action-item" href="#">
+            <img src="assets/facturas.png" alt="Facturas">
             Mis facturas
-        </div>
+        </a>
 
-        <div class="action-item">
+        <a class="action-item" href="#">
             Detalle de consumos
-        </div>
+        </a>
 
-        <div class="action-item">
-            <img src="assets/packs.png">
+        <a class="action-item" href="#">
+            <img src="assets/packs.png" alt="Packs">
             Packs
-        </div>
+        </a>
 
-        <div class="action-item">
-            <img src="assets/mejorar.png">
+        <a class="action-item" href="#">
+            <img src="assets/mejorar.png" alt="Mejorar plan">
             Mejorar plan
-        </div>
+        </a>
 
-        <div class="action-item">Mis pedidos</div>
-        <div class="action-item">Roaming</div>
-        <div class="action-item">Soporte técnico</div>
-        <div class="action-item">Más opciones</div>
+        <a class="action-item" href="#">Mis pedidos</a>
+        <a class="action-item" href="#">Roaming</a>
+        <a class="action-item" href="#">Soporte técnico</a>
+        <a class="action-item" href="#">Más opciones</a>
 
     </div>
 
